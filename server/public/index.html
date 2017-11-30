@@ -24,7 +24,8 @@
     
     <ul>
             <li ng-repeat = "food in vm.foodArray">
-         {{food.name}} 
+            <input type = "text" ng-model = "food.name">
+         <!-- {{food.name}}  -->
          <span ng-show = "food.is_hot" >is really hot!</span>   <!-- if this is true it should show this<< ternary -->
         <!-- ng-if is a lot like ng-show (do basically the same thing), ng-if never creates the element, ng-show creates it and hides it -->
          <span ng-hide = "food.is_hot">is not that hot</span> <!-- does the opposite of show -->
@@ -32,7 +33,8 @@
         {{food.deliciousness_rating > 80 ? "is really really delicious" : "is ok"}}
         <!-- ternary way to do an if statement but shorter. before the colon returned if true, after if else -->
         <button ng-click = "vm.deleteFood(food.id)">Delete</button>
-        <button ng-click = "vm.updateFood(food.id, updateFood.id)">Update Food</button>
+        <button ng-click = "vm.updateFood(food)">Update Food</button>
+            </li>
         
     </ul>
     {{3+9}}

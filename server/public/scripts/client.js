@@ -9,6 +9,10 @@ app.controller('FoodController', ['$http', function($http){ // brought in $http 
     self.newFood = {is_hot: false};
 
 
+
+
+
+
     self.getFood = function () { //$http instead of $.ajax
         $http({
             method: 'GET',
@@ -17,6 +21,8 @@ app.controller('FoodController', ['$http', function($http){ // brought in $http 
         }).then(function(response){ //.then instead of success
             console.log('response', response.data); // .data just to get the array back
             self.foodArray = response.data; //part of getting it on the dom (see foodArray in index)
+            
+
         });   
     };
 
@@ -45,10 +51,11 @@ app.controller('FoodController', ['$http', function($http){ // brought in $http 
         })
     }
 
-    self.updateFood = function(id){
+    self.updateFood = function(food){
         $http({
             method: 'PUT',
-            url: '/food/' + id,
+            url: '/food/' + food.id,
+            data: food
         }).then(function(response){
             console.log('response', response);
             self.getFood();
